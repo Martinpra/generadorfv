@@ -1,4 +1,7 @@
 streamlit
 numpy
 pandas
+os
+datetime
+time
 streamlit-option-menu
