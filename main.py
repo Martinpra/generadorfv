@@ -4,6 +4,7 @@ import datetime
 import streamlit as st
 import pandas as pd
 import numpy as np
+import openpyxl as op
 
 
 
@@ -15,7 +16,7 @@ with st.sidebar:
   
     kp = st.number_input('Coef. de Pot - Temp (1/°C)', min_value=-0.01,  max_value=0., value=-0.0044, step=0.0001, format='%.4f')
       
-    eta = st.number_input('Rendimiento General (p.u.)', min_value=0.1,  max_value=1., value=0.97, step=0.0001, format='%.2f')
+    eta = st.number_input('Rendimiento General (p.u.)', min_value=0.1,  max_value=1., value=0.97, step=0.01, format='%.2f')
     
     
    

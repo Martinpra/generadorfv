@@ -16,7 +16,7 @@ with st.sidebar:
     N = st.slider('Cantidad de paneles', min_value=1,  max_value=1000, value=250, step=1) 
     Ppico = st.number_input('Pot. pico del panel (W)', min_value=0,  max_value=500, value=240, step=10) 
     kp = st.number_input('Coef. de Pot - Temp (1/°C)', min_value=-0.01,  max_value=0., value=-0.0044, step=0.0001, format='%.4f')
-    eta = st.number_input('Rendimiento General (p.u.)', min_value=0.1,  max_value=1., value=0.97, step=0.0001, format='%.2f')
+    eta = st.number_input('Rendimiento General (p.u.)', min_value=0.1,  max_value=1., value=0.97, step=0.01, format='%.2f')
 
    
     selected_months = st.slider('Seleccione los meses que desea', min_value=1, max_value=12, value=(1, 12), step=1)
