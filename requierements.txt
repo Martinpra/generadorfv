@@ -1,8 +1,0 @@
-streamlit
-numpy
-pandas
-os
-datetime
-time
-openpyxl
-streamlit-option-menu
