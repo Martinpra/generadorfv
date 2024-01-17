@@ -80,7 +80,7 @@ start_datetime = datetime.datetime.combine(d1, t1)
 end_datetime = datetime.datetime.combine(d2, t2)
 
 
-st.write("Column Names:", df.columns)
+st.write("Nombre de Columnas:", df.columns)
 
 
 date_column_name = 'Fecha'  

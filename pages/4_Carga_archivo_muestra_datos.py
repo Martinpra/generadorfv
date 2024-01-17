@@ -77,7 +77,7 @@ if uploaded_file is not None:
             fecha_hora_inicio_2 = datetime.combine(fecha_seleccionada_2, hora_inicio_2)
 
     
-            st.write("Column Names:", datos_climatologicos.df.columns)
+            st.write("Nombre de Columnas:", datos_climatologicos.df.columns)
 
   
         fecha_column_name = 'Fecha' 
