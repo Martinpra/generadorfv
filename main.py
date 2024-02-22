@@ -6,21 +6,48 @@ import pandas as pd
 import numpy as np
 import openpyxl as op
 
+# Función para obtener los valores por defecto del generador de la facultad
+def obtener_valores_por_defecto_generador():
+    return {
+        'N': 250,
+        'Ppico': 240,
+        'kp': -0.0044,
+        'eta': 0.97
+    }
 
+# Función para restablecer los valores a los del generador de la facultad
+def restablecer_valores_por_defecto():
+    valores_por_defecto = obtener_valores_por_defecto_generador()
+    N = valores_por_defecto['N']
+    Ppico = valores_por_defecto['Ppico']
+    kp = valores_por_defecto['kp']
+    eta = valores_por_defecto['eta']
+    return N, Ppico, kp, eta
 
+# Obtener los valores por defecto
+valores_por_defecto = obtener_valores_por_defecto_generador()
+
+# Barra lateral con widgets para los parámetros del generador
 with st.sidebar: 
     st.write('# Completar datos')
-    N = st.slider('Cantidad de paneles', min_value=1,  max_value =1000, value=250, step=1) 
- 
-    Ppico = st.number_input('Pot. pico del panel (W)', min_value=0,  max_value =500, value=240, step=10) 
-  
-    kp = st.number_input('Coef. de Pot - Temp (1/°C)', min_value=-0.01,  max_value=0., value=-0.0044, step=0.0001, format='%.4f')
-      
-    eta = st.number_input('Rendimiento General (p.u.)', min_value=0.1,  max_value=1., value=0.97, step=0.01, format='%.2f')
-    
-    
-   
-    
+
+    # Botón para restablecer valores por defecto
+    if st.button("Restablecer a Valores por Defecto"):
+        st.session_state.N, st.session_state.Ppico, st.session_state.kp, st.session_state.eta = restablecer_valores_por_defecto()
+
+    # Barra lateral con widgets para los parámetros del generador
+    N = st.slider('Cantidad de paneles', min_value=1,  max_value=1000, value=st.session_state.get('N', valores_por_defecto['N']), step=1) 
+    Ppico = st.number_input('Pot. pico del panel (W)', min_value=0,  max_value=500, value=st.session_state.get('Ppico', valores_por_defecto['Ppico']), step=10) 
+    kp = st.number_input('Coef. de Pot - Temp (1/°C)', min_value=-0.01,  max_value=0., value=st.session_state.get('kp', valores_por_defecto['kp']), step=0.0001, format='%.4f')
+    eta = st.number_input('Rendimiento General (p.u.)', min_value=0.1,  max_value=1., value=st.session_state.get('eta', valores_por_defecto['eta']), step=0.01, format='%.2f')
+
+    # Almacenar los valores actuales en el estado de la sesión
+    st.session_state.N = N
+    st.session_state.Ppico = Ppico
+    st.session_state.kp = kp
+    st.session_state.eta = eta
+
+        
 tab1, tab2, tab3 = st.tabs(['Generacion_FV', 'Tuplas', 'Grafico por mes'])
 with tab1:
     
